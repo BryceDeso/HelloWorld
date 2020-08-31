@@ -6,11 +6,13 @@ namespace HelloWorld
 {
     class Game
     {
+        bool _gameOver = false;
+        bool mysteryBerryEffect = false;
+
         public void Run()
         {
 
-            bool gameOver = false;
-            while (gameOver == false)
+            while (_gameOver == false)
             {
                 //Base player stats for any character.
 
@@ -114,7 +116,6 @@ namespace HelloWorld
                             Console.WriteLine("\nYou turn away and continue on your journey.");
                             Console.WriteLine("Press Enter to continue.");
                             Console.ReadKey();
-                            break;
                         }
                         else
                         {
@@ -135,6 +136,7 @@ namespace HelloWorld
                     }
                 }
 
+                //Console.WriteLine(mysteryBerryEffect);
 
                 //Player continues down path then runs into riddle gate.
                 Console.Clear();
@@ -143,13 +145,14 @@ namespace HelloWorld
                 Console.ReadKey();
 
                 //Player is given a option to decline or accept riddle.
+                Console.Clear();
                 Console.WriteLine("\nAs you are inspecting the gate the lion's mouth opens and says:");
                 Console.WriteLine("'Answer my riddle and you may pass through my gate.'");
                 Console.WriteLine("Press 1 to accept riddle.");
                 Console.WriteLine("Press 2 to decline riddle.");
-                char gateRiddle = ' ';
-                gateRiddle = Console.ReadKey().KeyChar;
-                if (gateRiddle == '1')
+                char gateAnswer = ' ';
+                gateAnswer = Console.ReadKey().KeyChar;
+                if (gateAnswer == '1')
                 {
                     for (int i = 0; i < 5; i++)
                     {
@@ -176,12 +179,12 @@ namespace HelloWorld
                         }
                     }
                 }
-                else if (gateRiddle == '2')
+                else if (gateAnswer == '2')
                 {
                     //Player declines lions riddle and is killed by the lion.
                     Console.WriteLine("\nYou decline the lion's offer.");
-                    Console.WriteLine("As you walk away the lion reaches a paw out and slices your head off.");
-                    Console.WriteLine("'Dont Deny me my entertainment', says the lion.");
+                    Console.WriteLine("\n'Dont deny me entertainment.', says the lion.");
+                    Console.WriteLine("You go to look at the lion and then everything goes black......");
                     Console.WriteLine("Press Enter to continue.");
                     Console.ReadKey();
 
@@ -189,7 +192,7 @@ namespace HelloWorld
                     Console.WriteLine("YOU DIED!");
                     Console.WriteLine("\nPress Enter to restart.");
                     Console.ReadKey();
-                    break;
+                    _gameOver = true;
                 }
                 else
                 {
@@ -199,13 +202,11 @@ namespace HelloWorld
                 Console.WriteLine("You walk pass the gates and can now continue down the path.");
                 Console.WriteLine("Press Enter to continue down path.");
                 Console.ReadKey();
-                /*
-                Console.WriteLine("\n After walking for a bit , you walk into the plain and see the ocassional Small Slime popping up and wandering near the path.");
-                Console.WriteLine("After walking down the path for a bit longer you see what looks to be a village with a tall stone wall");
-                Console.WriteLine("surrounding it in the distance");
-                Console.WriteLine("\nPress Enter to continue down path.");
+
+                Console.WriteLine("\n After walking for a while, you emerge into a big open clearing with a small village with a wooden wall surrounding it.");
+                Console.WriteLine("You also notice many Small Slimes in the area.");
+                Console.WriteLine("Press Enter to Continue.");
                 Console.ReadKey();
-                */
 
                 //Player enters Kataberry Village area.
                 Console.Clear();
@@ -221,7 +222,8 @@ namespace HelloWorld
                 Console.ReadKey();
 
                 Console.WriteLine("\nAs you approach the gate, you stop in your tracks as the guard wakes from his slumber ");
-                Console.WriteLine("and jumps to his feet prepared for what you might do. He notices the Small Slime and shakes it off.");
+                Console.WriteLine("and jumps to his feet and grabs to hilt of his sword .prepared for what you might do.");
+                Console.WriteLine("He notices the Small Slime and shakes it off.");
                 Console.WriteLine("\nPress Enter to talk with the guard");
                 Console.ReadKey();
 
@@ -236,13 +238,13 @@ namespace HelloWorld
                     if (guardQuestionOne == '1')
                     {
                         //Player identifies themself to guard. Guard gives player quest.
-                        Console.WriteLine("\n\n" + name + " huh? I would let you in but with the increase of Small Slimes in the ");
-                        Console.WriteLine("area we arn't allowed to open the gate unless you have a permit. Well, you look like a capable person");
-                        Console.WriteLine("carrying that " + weapon + " around. If you do me the favor of taking out some of the");
-                        Console.WriteLine("Small Slimes around the village walls I will allow you entery.");
+                        Console.WriteLine("\n\n" + name + " huh? I would let you in but your face isnt one i've seen before, and with the ");
+                        Console.WriteLine("recent bandit clan that moved into the hills we don't take kindly to strangers. Hmmmm... you look like");
+                        Console.WriteLine("a good enough person but you carrying that " + weapon + " around... you look to suspicious for me to let you in.");
+                        Console.WriteLine("I'll make you a deal, a freelance swords-man was supposed to come and kill these Small Slimes but hasn't shown up.");
+                        Console.WriteLine("up yet. If you slay the slimes and i'll let you in.");
                         Console.WriteLine("\nPress Enter to accept");
 
-                        //Player accepts guard's request and kills slimes.
                         Console.WriteLine("\nThe guard says, 'Ok, come back when you have killed most of the Small Slimes Around the village walls.'");
                         Console.WriteLine("then procceds to walk back the wall to nap again.");
                         Console.WriteLine("\nPress Enter to begin hunting Small Slimes.");
@@ -260,12 +262,10 @@ namespace HelloWorld
                         Console.ReadLine();
 
                         //Player encounters Medium Slime.
-                        Console.WriteLine("You begin to look around and notice the sound is coming from behind a small, nearby hill.");
-                        Console.WriteLine("After a second or two of looking at the hill a Medium Slime with the same small slime you grazed,jumps clear over the hill and begins to jump");
-                        Console.WriteLine("over the hill and begins to jump over the hill and begins to jump and begins to jump angrily towards you.");
-                        Console.WriteLine("The Small Slime jumps off the Medium Slime as it rushes towards you.");
+                        Console.WriteLine("You begin to look around and notice the sound is coming from the forest.");
+                        Console.WriteLine("After a second or two of looking at the trees a Medium Slime, with the same small slime you grazed, begins to jump");
+                        Console.WriteLine("angrily towards you. The Small Slime jumps off the Medium Slime as it rushes towards you.");
                         Console.WriteLine();
-
 
 
 
