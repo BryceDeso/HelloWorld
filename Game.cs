@@ -4,18 +4,62 @@ using System.Text;
 
 namespace HelloWorld
 {
-    class Game
+    class game
     {
         bool _gameOver = false;
-        bool mysteryBerryEffect = false;
+
+        //Will recive input from the player.
+        char GetInput(string option1, string option2, string query)
+        {
+            char input = ' ';
+            while (input != '1' && input != '2')
+            {
+                Console.WriteLine(query);
+                Console.WriteLine("\nPress 1 to " + option1);
+                Console.WriteLine("Press 2 to " + option2); ;
+                input = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+
+            }
+            return input;
+        }
+       
+        //This puts the player in an endless dungeon.
+        void endlessRoom(int stepsTaken)
+        {
+            switch (stepsTaken)
+            {
+                case 0:
+                    {
+                        Console.WriteLine("You appear in a big open room with a wooden door on the far side of the room.");
+                        break;
+                    }
+                case 1:
+                    {
+                        Console.WriteLine("You take a couple steps forward but somthing seemed off...");
+                        break;
+                    }
+            }
+
+            char input = ' ';
+            input = GetInput("Walk forward", "Walk back", "What direction do you want to go?");
+            if (input == '1')
+            {
+                endlessRoom(stepsTaken + 5);
+            }
+
+
+        }
 
         public void Run()
         {
 
             while (_gameOver == false)
             {
-                //Base player stats for any character.
+                
+                bool mysteryBerryEffect = false;
 
+                //Base player stats for any character.
                 //PLayers base level
                 float level = 1;
                 //Determinds players role
@@ -100,7 +144,7 @@ namespace HelloWorld
                         if (mysteryBerryOptionTwo == '1')
                         {
                             //Player eats many berries. Player is effected by the Mysterious Berry but does not know.
-                            bool mysteryBerryEffect = true;
+                            mysteryBerryEffect = true;
                             Console.WriteLine("\nYou continue to eat the Mystery Berries in handfulls at a time.");
                             Console.WriteLine("Press Enter to eat more Mystery Berries.");
                             Console.ReadKey();
@@ -136,8 +180,6 @@ namespace HelloWorld
                     }
                 }
 
-                //Console.WriteLine(mysteryBerryEffect);
-
                 //Player continues down path then runs into riddle gate.
                 Console.Clear();
                 Console.WriteLine("\nYou begin to walk down the path for a while then stumble upon a gate with a lion insignia in the middle.");
@@ -170,6 +212,7 @@ namespace HelloWorld
                             Console.WriteLine("Press Enter to continue down path.");
                             Console.ReadLine();
                             Console.Clear();
+                            break;
                         }
                         else
                         {
@@ -208,7 +251,7 @@ namespace HelloWorld
                 Console.WriteLine("Press Enter to Continue.");
                 Console.ReadKey();
 
-                //Player enters Kataberry Village area.
+                //Player enters Kataberry Village surrounding area.
                 Console.Clear();
 
                 Console.WriteLine("You begin to approach the village and see the the outline of");
@@ -276,6 +319,11 @@ namespace HelloWorld
                         Console.WriteLine("\n\n'Then begone with you then.', The guard says in an agitated voice.");
                         Console.WriteLine("Press enter to walk away.");
                         Console.ReadKey();
+
+                        //Player is teleported to an endless dungeon.
+                        Console.WriteLine("You feel weird as you go to walk away. The world begins to spin.....");
+
+                        endlessRoom(0);
 
 
                     }
