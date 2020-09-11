@@ -7,6 +7,7 @@ namespace HelloWorld
     class game
     {
         bool _gameOver = false;
+        bool mysteryBerryEffect = false;
 
         //Will recive input from the player.
         char GetInput(string option1, string option2, string query)
@@ -24,7 +25,7 @@ namespace HelloWorld
             return input;
         }
        
-        //This puts the player in an endless dungeon.
+        //This puts the player in an endless room.
         void endlessRoom(int stepsTaken)
         {
             switch (stepsTaken)
@@ -57,7 +58,6 @@ namespace HelloWorld
             while (_gameOver == false)
             {
                 
-                bool mysteryBerryEffect = false;
 
                 //Base player stats for any character.
                 //PLayers base level
@@ -315,16 +315,19 @@ namespace HelloWorld
                     }
                     else if (guardQuestionOne == '2')
                     {
+
                         //Player inputs 2 to deny to validate themselves.
                         Console.WriteLine("\n\n'Then begone with you then.', The guard says in an agitated voice.");
                         Console.WriteLine("Press enter to walk away.");
                         Console.ReadKey();
 
                         //Player is teleported to an endless dungeon.
-                        Console.WriteLine("You feel weird as you go to walk away. The world begins to spin.....");
+                        Console.WriteLine("\nYou feel weird as you go to walk away. The world begins to spin.....");
+                        Console.WriteLine("Press Enter to continue.....");
+                        Console.ReadKey();
+                        Console.Clear();
 
                         endlessRoom(0);
-
 
                     }
                     else

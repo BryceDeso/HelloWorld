@@ -7,7 +7,7 @@ namespace HelloWorld
         static void Main(string[] args)
         {
             //Create a new instance of a Game
-            Game game = new Game();
+            game game = new game();
             //Run the Game
             game.Run();
             //Wait before closing
