@@ -6,6 +6,7 @@ namespace HelloWorld
 {
     class game
     {
+        private Player _player1;
         bool _gameOver = false;
         bool mysteryBerryEffect = false;
 
@@ -20,11 +21,35 @@ namespace HelloWorld
                 Console.WriteLine("Press 2 to " + option2); ;
                 input = Console.ReadKey().KeyChar;
                 Console.WriteLine();
-
             }
             return input;
         }
-       
+
+        public void CreateCharacter()
+        {
+            Console.WriteLine("Greetings champion, what is yout name? ");
+            string name = Console.ReadLine();
+            string role = "none";
+            string weapon = "none";
+
+            char input = ' ';
+            GetInput("Knight", "Archer", "Please select a role");
+            if (input == '1')
+            {
+                role = "Knight";
+                weapon = "sword";
+            }
+            else if (input == '2')
+            {
+                role = "Archer";
+                weapon = "bow";
+            }
+
+            Player player = new Player(name, role, weapon);
+            _player1.GetName();
+            //return player;
+        }
+
         //This puts the player in an endless room.
         void endlessRoom(int stepsTaken)
         {
@@ -48,8 +73,6 @@ namespace HelloWorld
             {
                 endlessRoom(stepsTaken + 5);
             }
-
-
         }
 
         public void Run()
@@ -57,25 +80,11 @@ namespace HelloWorld
 
             while (_gameOver == false)
             {
-                
 
-                //Base player stats for any character.
-                //PLayers base level
-                float level = 1;
-                //Determinds players role
-                string role = "none";
-                //Determinds players weapon
-                string weapon = "none";
-                //Keeps track of the amount of gold player is holding.
-                float goldHeld = 0f;
+                CreateCharacter();
+                Console.WriteLine(_player1);
 
-                //Beginning of game.
-
-                //Asks player name.
-                Console.WriteLine("Greetings champion, what is yout name? ");
-                string name = Console.ReadLine();
-
-                //Asks players role.
+                /*Asks players role.
                 Console.WriteLine("Ah, welcome " + name + " to the Hall of Champions! Please select a role.");
                 Console.WriteLine("Press 1 for Knight role.");
                 Console.WriteLine("Press 2 for Archer role.");
@@ -101,21 +110,13 @@ namespace HelloWorld
                     }
                 }
 
-                //Clears above text.
                 Console.Clear();
-
-                //Shows Players beginning stats.
-                Console.WriteLine("PLayer Stats:");
-                Console.WriteLine("Player name: " + name);
-                Console.WriteLine("PLayer level: " + level);
-                Console.WriteLine("PLayer role: " + role);
-                Console.WriteLine("Player weapon: " + weapon);
                 Console.WriteLine("\nPress Enter to begin journey.");
                 Console.ReadKey();
 
 
-                //Player makes they're way through first area.
-                goldHeld = goldHeld + 43;
+                //Player makes way through first area.
+                _goldHeld = _goldHeld + 43;
                 Console.WriteLine("\nYou awake flat on your back in a meadow. You lean foward and notice a " + weapon + " and small leather pouch next to you.");
                 Console.WriteLine("You stand up and grab the " + weapon + " and the pouch. You open the pouch and it contained many gold pieces.");
                 Console.WriteLine("You look around the meadow and notice a narrow dirt path between some trees.");
@@ -344,9 +345,10 @@ namespace HelloWorld
                 Console.WriteLine("'You enter Kataberry Village'");
                 Console.WriteLine("You enter kataberry and the first thing you see is the Market Square humming with life as");
                 Console.WriteLine("people trying to buy and sell a variety of wares.");
+                */
             }
+            
         }
-
 
     }
 }
