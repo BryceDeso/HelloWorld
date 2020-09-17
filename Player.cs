@@ -4,7 +4,6 @@ using System.Text;
 
 namespace HelloWorld
 {
-
     class Player
     {
         private string _name;
@@ -48,12 +47,19 @@ namespace HelloWorld
             return _goldHeld;
         }
 
+        public int AddGoldToStorage(int addedGold)
+        {
+            _goldHeld += addedGold;
+            return _goldHeld;
+        }
+
         public void PrintStats()
         {
-            Console.WriteLine("PLayer Stats:");
-            Console.WriteLine("Player name: " + _name);
-            Console.WriteLine("PLayer role: " + _role);
-            Console.WriteLine("Player weapon: " + _weapon);
+            Console.WriteLine("Player Stats:");
+            Console.WriteLine("Name: " + _name);
+            Console.WriteLine("Role: " + _role);
+            Console.WriteLine("Weapon: " + _weapon);
+            Console.WriteLine("Gold: " + _goldHeld);
         }
 
     }

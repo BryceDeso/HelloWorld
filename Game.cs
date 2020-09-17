@@ -6,7 +6,7 @@ namespace HelloWorld
 {
     class game
     {
-        private Player _player1;
+        private Player _player;
         bool _gameOver = false;
         bool mysteryBerryEffect = false;
 
@@ -25,13 +25,14 @@ namespace HelloWorld
             return input;
         }
 
-        public void CreateCharacter()
+        public Player CreateCharacter()
         {
             Console.WriteLine("Greetings champion, what is yout name? ");
             string name = Console.ReadLine();
             string role = "none";
             string weapon = "none";
 
+            Console.WriteLine("Ah, welcome " + _player.GetName() + ", to the hall of champions!");
             char input = ' ';
             GetInput("Knight", "Archer", "Please select a role");
             if (input == '1')
@@ -46,8 +47,7 @@ namespace HelloWorld
             }
 
             Player player = new Player(name, role, weapon);
-            _player1.GetName();
-            //return player;
+            return player;
         }
 
         //This puts the player in an endless room.
@@ -82,33 +82,7 @@ namespace HelloWorld
             {
 
                 CreateCharacter();
-                Console.WriteLine(_player1);
-
-                /*Asks players role.
-                Console.WriteLine("Ah, welcome " + name + " to the Hall of Champions! Please select a role.");
-                Console.WriteLine("Press 1 for Knight role.");
-                Console.WriteLine("Press 2 for Archer role.");
-
-                //Adjusts stats and a assigns a role depending on what input the player chooses.
-                char input = ' ';
-                while (input != '1' && input != '2')
-                {
-                    input = Console.ReadKey().KeyChar;
-                    if (input == '1')
-                    {
-                        role = "Knight";
-                        weapon = "sword";
-                    }
-                    else if (input == '2')
-                    {
-                        role = "Archer";
-                        weapon = "bow";
-                    }
-                    else
-                    {
-                        Console.WriteLine("Input not vaild.");
-                    }
-                }
+                _player.PrintStats();
 
                 Console.Clear();
                 Console.WriteLine("\nPress Enter to begin journey.");
@@ -116,11 +90,12 @@ namespace HelloWorld
 
 
                 //Player makes way through first area.
-                _goldHeld = _goldHeld + 43;
-                Console.WriteLine("\nYou awake flat on your back in a meadow. You lean foward and notice a " + weapon + " and small leather pouch next to you.");
-                Console.WriteLine("You stand up and grab the " + weapon + " and the pouch. You open the pouch and it contained many gold pieces.");
+                _player.AddGoldToStorage(43);
+                Console.WriteLine("\nYou awake flat on your back in a meadow. You lean foward and notice a " + _player.GetWeapon() + " and small leather pouch next to you.");
+                Console.WriteLine("You stand up and grab the " + _player.GetWeapon() + " and the pouch. You open the pouch and it contained many gold pieces.");
                 Console.WriteLine("You look around the meadow and notice a narrow dirt path between some trees.");
                 Console.WriteLine("You gain 43 gold pieces.");
+                _player.PrintStats();
                 Console.WriteLine("\nPress Enter to walk down path.");
                 Console.ReadKey();
 
@@ -145,7 +120,6 @@ namespace HelloWorld
                         if (mysteryBerryOptionTwo == '1')
                         {
                             //Player eats many berries. Player is effected by the Mysterious Berry but does not know.
-                            mysteryBerryEffect = true;
                             Console.WriteLine("\nYou continue to eat the Mystery Berries in handfulls at a time.");
                             Console.WriteLine("Press Enter to eat more Mystery Berries.");
                             Console.ReadKey();
@@ -153,7 +127,7 @@ namespace HelloWorld
                             Console.WriteLine("\nYou eat the berries until you are full.");
                             Console.WriteLine("Press Enter to continue journey.");
                             Console.ReadKey();
-                            break;
+                            mysteryBerryEffect = true;
                         }
                         else if (mysteryBerryOptionTwo == '2')
                         {
@@ -275,16 +249,16 @@ namespace HelloWorld
                 while (guardQuestionOne != '1' || guardQuestionOne != '2')
                 {
                     Console.WriteLine("\n'What is your name and business in Kataberry?', the guard asks sternly.");
-                    Console.WriteLine("\nPress 1 to tell the guard 'My name is " + name + " and I have no business here, Im just passing through'");
+                    Console.WriteLine("\nPress 1 to tell the guard 'My name is " + _player.GetName() + " and I have no business here, Im just passing through'");
                     Console.WriteLine("Press 2 to tell the guard 'That is none of your business.'");
                     //Player chooses to weither or not to identify themselves to guard.
                     guardQuestionOne = Console.ReadKey().KeyChar;
                     if (guardQuestionOne == '1')
                     {
                         //Player identifies themself to guard. Guard gives player quest.
-                        Console.WriteLine("\n\n" + name + " huh? I would let you in but your face isnt one i've seen before, and with the ");
+                        Console.WriteLine("\n\n" + _player.GetName() + " huh? I would let you in but your face isnt one i've seen before, and with the ");
                         Console.WriteLine("recent bandit clan that moved into the hills we don't take kindly to strangers. Hmmmm... you look like");
-                        Console.WriteLine("a good enough person but you carrying that " + weapon + " around... you look to suspicious for me to let you in.");
+                        Console.WriteLine("a good enough person but you carrying that " + _player.GetWeapon() + " around... you look to suspicious for me to let you in.");
                         Console.WriteLine("I'll make you a deal, a freelance swords-man was supposed to come and kill these Small Slimes but hasn't shown up.");
                         Console.WriteLine("up yet. If you slay the slimes and i'll let you in.");
                         Console.WriteLine("\nPress Enter to accept");
@@ -294,7 +268,7 @@ namespace HelloWorld
                         Console.WriteLine("\nPress Enter to begin hunting Small Slimes.");
                         Console.ReadLine();
 
-                        Console.WriteLine("You take your " + weapon + " and begin to slay Small Slimes around the wall, they occasionaly ");
+                        Console.WriteLine("You take your " + _player.GetWeapon() + " and begin to slay Small Slimes around the wall, they occasionaly ");
                         Console.WriteLine("drop a piece of gold or small item a villager might have dropped outside the walls. You attack one of the");
                         Console.WriteLine("Small Slimes but you graze it and begins to run away in terror.");
                         Console.WriteLine("\nPress Enter to shrug and coninue slaying Small Slimes.");
@@ -330,6 +304,8 @@ namespace HelloWorld
 
                         endlessRoom(0);
 
+
+
                     }
                     else
                     {
@@ -345,7 +321,7 @@ namespace HelloWorld
                 Console.WriteLine("'You enter Kataberry Village'");
                 Console.WriteLine("You enter kataberry and the first thing you see is the Market Square humming with life as");
                 Console.WriteLine("people trying to buy and sell a variety of wares.");
-                */
+                
             }
             
         }
