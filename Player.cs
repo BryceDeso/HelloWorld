@@ -10,6 +10,7 @@ namespace HelloWorld
         private string _role;
         private string _weapon;
         private int _goldHeld;
+        private Item[] _inventory;
 
         public Player()
         {
@@ -17,6 +18,7 @@ namespace HelloWorld
             _role = "none";
             _weapon = "none";
             _goldHeld = 0;
+            _inventory = new Item[5];
         }
 
         public Player(string name, string role, string weapon)
@@ -24,7 +26,8 @@ namespace HelloWorld
             _name = name;
             _role = role;
             _weapon = weapon;
-            _goldHeld = 0;            
+            _goldHeld = 0;
+            _inventory = new Item[5];
         }
 
         public string GetName()

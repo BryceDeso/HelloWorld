@@ -4,16 +4,41 @@ using System.Text;
 
 namespace HelloWorld
 {
+    struct Item
+    {
+        public string name;
+        public string description;
+    }
+
     class game
     {
         private Player _player;
+        private Item _rustyKey;
+        private Item _brozeKey;
+        private Item _silverKey;
+        private Item _goldKey;
+        private Item _weirdKey;
+
         bool _gameOver = false;
         public bool mysteryBerryEffect = false;
+
+        public void InitializeKeys()
+        {
+            _rustyKey.name = "Rusty Key";
+            _brozeKey.name = "Broze Key";
+            _silverKey.name = "Silver Key";
+            _goldKey.name = "Gold Key";
+            _weirdKey.name = "Weird Looking Key";
+            _rustyKey.description = "An old rusty key, I wonder what it goes to...";
+            _brozeKey.description = "A bronze key, must go to one of those doors.";
+            _silverKey.description = "A silver key, must go to one of those doors.";
+            _goldKey.description = "A gold key, must go to one of those doors.";
+            _weirdKey.description = "A key with a 'fleshy' texture, what could this even go to?";
+        }
 
         //Will recive input from the player.
         public void GetInput(out char input, string option1, string option2, string query)
         {
-
             Console.WriteLine(query);
             Console.WriteLine("1." + option1);
             Console.WriteLine("2." + option2);
@@ -100,6 +125,7 @@ namespace HelloWorld
 
         public void Start()
         {
+            InitializeKeys();
             _player = CreateCharacter();
         }
 
