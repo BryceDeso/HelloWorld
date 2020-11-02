@@ -112,14 +112,16 @@ namespace HelloWorld
             if (input == '1')
             {
                 Console.Clear();
-                endlessRoom(stepsTaken + 2);
                 Console.WriteLine("Steps taken: " + stepsTaken);
+                endlessRoom(stepsTaken + 2);
+                
             }
             else if(input == '2')
             {
                 Console.Clear();
-                endlessRoom(stepsTaken - 2);
                 Console.WriteLine("Steps taken: " + stepsTaken);
+                endlessRoom(stepsTaken - 2);
+                
             }
         }
 
