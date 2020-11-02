@@ -173,6 +173,7 @@ namespace HelloWorld
             Console.WriteLine("You stand up and grab the " + _player.GetWeapon() + " and the pouch. You open the pouch and it contained many gold pieces.");
             Console.WriteLine("You look around the meadow and notice a narrow dirt path between some trees.");
             Console.WriteLine("You gain 43 gold pieces.");
+            Console.WriteLine("\n");
             _player.PrintStats();
             PressEnterTo("go down path.");
 

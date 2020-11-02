@@ -65,5 +65,9 @@ namespace HelloWorld
             Console.WriteLine("Gold: " + _goldHeld);
         }
 
+        public void ShowInventory()
+        {
+            
+        }
     }
 }
