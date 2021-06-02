@@ -323,7 +323,7 @@ namespace HelloWorld
 
 
             }
-            //Player inputs 2 to deny to validate themselves.
+            //Player inputs 2 to deny to identify themselves.
             //Player is teleported to an endless dungeon.
             else if (input == '2')
             {
